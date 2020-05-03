@@ -27,3 +27,6 @@ scene_de_rham_pauli: $(MANIM_SOURCE)
 
 scene_sad_einstein: $(MANIM_SOURCE)
 	$(MANIM_COMMAND) $(MANIM_SOURCE) SadEinstein $(MANIM_ARGUMENTS)
+
+scene_big_crunch: $(MANIM_SOURCE)
+	$(MANIM_COMMAND) $(MANIM_SOURCE) BigCrunch $(MANIM_ARGUMENTS)

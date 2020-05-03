@@ -110,3 +110,22 @@ class SadEinstein(VerticalScene):
         self.play(FadeOut(image))
 
         self.wait()
+
+
+class BigCrunch(VerticalScene):
+    def construct(self):
+        galaxies = Group(*[Galaxy() for _ in range(100)])
+
+        for g in galaxies:
+            g.go_away(random.uniform(6, 16))
+
+        self.add(galaxies)
+
+        self.play(
+            *[v(g) for g in galaxies for v in (lambda g: g.move_to,
+                                               lambda g: np.array([0, 0, 0]),
+                                               lambda g: g.scale,
+                                               lambda g: 0.1)],
+            run_time=3, rate_func=lambda t: pow(t, 2)
+        )
+        self.wait()
