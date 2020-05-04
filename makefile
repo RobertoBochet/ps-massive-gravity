@@ -1,10 +1,10 @@
 MANIM_COMMAND=manim
 MANIM_ARGUMENTS=-r2520,1080 --high_quality
-MANIM_ARGUMENTS_DEBUG=-r630,270 -pl
+MANIM_ARGUMENTS_PREVIEW=-r630,270 -pl
 
 MANIM_SOURCE=scenes/scenes.py
 
-ifdef DEBUG
+ifdef PREVIEW
 	MANIM_ARGUMENTS=$(MANIM_ARGUMENTS_DEBUG)
 endif
 
@@ -33,3 +33,6 @@ scene_big_crunch: $(MANIM_SOURCE)
 
 scene_lisa: $(MANIM_SOURCE)
 	$(MANIM_COMMAND) $(MANIM_SOURCE) LISA $(MANIM_ARGUMENTS)
+
+scene_massive_gravity_text: $(MANIM_SOURCE)
+	$(MANIM_COMMAND) $(MANIM_SOURCE) MassiveGravityText $(MANIM_ARGUMENTS)
