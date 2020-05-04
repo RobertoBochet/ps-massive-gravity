@@ -30,3 +30,6 @@ scene_sad_einstein: $(MANIM_SOURCE)
 
 scene_big_crunch: $(MANIM_SOURCE)
 	$(MANIM_COMMAND) $(MANIM_SOURCE) BigCrunch $(MANIM_ARGUMENTS)
+
+scene_lisa: $(MANIM_SOURCE)
+	$(MANIM_COMMAND) $(MANIM_SOURCE) LISA $(MANIM_ARGUMENTS)

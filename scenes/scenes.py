@@ -129,3 +129,78 @@ class BigCrunch(VerticalScene):
             run_time=3, rate_func=lambda t: pow(t, 2)
         )
         self.wait()
+
+
+class LISA(VerticalScene):
+    CONFIG = {
+        "satellites_style": {
+            "radius": 0.2,
+            "fill_opacity": 1,
+            "fill_color": Color("purple"),
+            "color": Color("purple")
+        },
+        "lasers_style": {
+            "color": "#F00",
+            "stroke_width": 15
+        },
+        "waves_style": {
+            "color": "WHITE",
+            "stroke_width": 30
+        }
+    }
+
+    def construct(self):
+        # creates the sun
+        sun = ImageMobject(os.path.join(ASSETS_FOLDER, "./sun.png"), height=10)
+        sun.move_to(DOWN * 8)
+
+        # creates satellites
+        sats = Group(*[Circle(**self.satellites_style) for _ in range(3)])
+        # moves satellites to position
+        for i in range(3):
+            sats[i].move_to(2 * RIGHT)
+            sats[i].rotate_about_origin(np.pi / 2 + i * 2 * np.pi / 3)
+
+        # creates lasers between satellites
+        lasers = Polygon(*[ORIGIN], **self.lasers_style)
+        # binds lasers to satellites
+        lasers.add_updater(lambda l: l.set_points_as_corners([s.get_center() for s in [*sats, sats[0]]]))
+
+        # creates gravity waves
+        waves = Group(*[Circle(radius=i / 1.5, **self.waves_style) for i in range(15)])
+        waves.move_to(20 * RIGHT + 10 * UP)
+
+        # shows the sun
+        self.play(GrowFromCenter(sun))
+
+        # shows satellites
+        self.play(*[GrowFromCenter(sats[i]) for i in range(3)])
+
+        # starts rotation
+        self.play(
+            Rotate(sats, 1 * np.pi, about_point=ORIGIN),
+            run_time=4, rate_func=linear
+        )
+
+        # shows lasers
+        self.bring_to_back(lasers)
+        self.play(
+            Rotate(sats, 1 / 4 * np.pi, about_point=ORIGIN),
+            ShowCreation(lasers),
+            run_time=1, rate_func=linear
+        )
+
+        # waits waves
+        self.play(
+            Rotate(sats, 1 * np.pi, about_point=ORIGIN),
+            run_time=4, rate_func=linear
+        )
+
+        # starts waves
+        self.play(
+            Rotate(sats, 1 * np.pi, about_point=ORIGIN),
+            *[v(w) for w in waves for v in (lambda w: w.scale, lambda w: 4)],
+            run_time=4, rate_func=linear
+        )
+
+        self.wait()
