@@ -204,3 +204,14 @@ class LISA(VerticalScene):
         )
 
         self.wait()
+
+
+class MassiveGravityText(VerticalScene):
+    def construct(self):
+        text = TextMobject("Gravità massiva")
+
+        self.wait()
+
+        self.play(Write(text))
+
+        self.wait()
