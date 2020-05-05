@@ -111,6 +111,28 @@ class DeRhamAndPaoli(VerticalScene):
         self.wait()
 
 
+class DeRham(VerticalScene):
+    def construct(self):
+        de_rham_photo = ImageMobject(os.path.join(ASSETS_FOLDER, "./de_rham.jpg")).move_to(UP * 1.4)
+        de_rham_text = TextMobject("De Rham Claudia").move_to(UP * 3)
+
+        self.wait()
+
+        self.play(
+            FadeIn(de_rham_photo),
+            Write(de_rham_text)
+        )
+
+        self.wait()
+
+        self.play(
+            FadeOut(de_rham_photo),
+            FadeOut(de_rham_text)
+        )
+
+        self.wait()
+
+
 class SadEinstein(VerticalScene):
     def construct(self):
         image = ImageMobject(os.path.join(ASSETS_FOLDER, "./sad_einstein.jpg"))

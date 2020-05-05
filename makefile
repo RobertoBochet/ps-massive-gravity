@@ -25,6 +25,9 @@ scene_dark_energy: $(MANIM_SOURCE)
 scene_de_rham_pauli: $(MANIM_SOURCE)
 	$(MANIM_COMMAND) $(MANIM_SOURCE) DeRhamAndPaoli $(MANIM_ARGUMENTS)
 
+scene_de_rham: $(MANIM_SOURCE)
+	$(MANIM_COMMAND) $(MANIM_SOURCE) DeRham $(MANIM_ARGUMENTS)
+
 scene_sad_einstein: $(MANIM_SOURCE)
 	$(MANIM_COMMAND) $(MANIM_SOURCE) SadEinstein $(MANIM_ARGUMENTS)
 
