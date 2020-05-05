@@ -15,6 +15,18 @@ class VerticalScene(Scene):
     }
 
 
+class DebugScene(Scene):
+    CONFIG = {
+        "camera_config": {
+            "frame_height": 4 * 6.0 * 21 / 9,
+            "frame_width": 4 * 6.0,
+        }
+    }
+
+    def construct(self):
+        self.add(Rectangle(height=6.0 * 21 / 9, width=6.0))
+
+
 class Galaxy(ImageMobject):
     list = glob.glob(os.path.join(ASSETS_FOLDER, "./galaxies/*"))
 
@@ -167,14 +179,14 @@ class LISA(VerticalScene):
         lasers.add_updater(lambda l: l.set_points_as_corners([s.get_center() for s in [*sats, sats[0]]]))
 
         # creates gravity waves
-        waves = Group(*[Circle(radius=i / 1.5, **self.waves_style) for i in range(15)])
-        waves.move_to(20 * RIGHT + 10 * UP)
+        waves = Group(*[Circle(radius=(i + 3) / 1.5, **self.waves_style) for i in range(5)])
+        waves.move_to(10 * RIGHT + 5 * UP)
 
         # shows the sun
-        self.play(GrowFromCenter(sun))
+        self.play(GrowFromCenter(sun), run_time=1)
 
         # shows satellites
-        self.play(*[GrowFromCenter(sats[i]) for i in range(3)])
+        self.play(*[GrowFromCenter(sats[i]) for i in range(3)], run_time=1)
 
         # starts rotation
         self.play(
@@ -197,10 +209,24 @@ class LISA(VerticalScene):
         )
 
         # starts waves
+        self.add(waves)
         self.play(
             Rotate(sats, 1 * np.pi, about_point=ORIGIN),
-            *[v(w) for w in waves for v in (lambda w: w.scale, lambda w: 4)],
+            *[v(w) for w in waves for v in (lambda w: w.scale, lambda w: 10)],
             run_time=4, rate_func=linear
+        )
+
+        # removes lasers
+        self.play(
+            Uncreate(lasers),
+            run_time=0.5
+        )
+
+        # removes sun and satellites
+        self.play(
+            ScaleInPlace(sun, 0),
+            ScaleInPlace(sats, 0),
+            run_time=0.5
         )
 
         self.wait()
