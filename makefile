@@ -1,5 +1,5 @@
 MANIM_COMMAND=manim
-MANIM_ARGUMENTS=-r2520,1080 --high_quality
+MANIM_ARGUMENTS=-r2520,1080 --high_quality --video_output_dir ./render/manim
 MANIM_ARGUMENTS_PREVIEW=-r630,270 -pl
 
 MANIM_SOURCE=scenes/scenes.py
@@ -14,6 +14,7 @@ all: all_scenes
 
 clean:
 	rm ./media -r
+	rm ./render/manim -r
 
 all_scenes: $(MANIM_SOURCE)
 	$(MANIM_COMMAND) $(MANIM_SOURCE) $(MANIM_ARGUMENTS) -a
