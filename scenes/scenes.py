@@ -113,24 +113,22 @@ class DeRhamAndPaoli(VerticalScene):
 
 class DeRham(VerticalScene):
     def construct(self):
-        de_rham_photo = ImageMobject(os.path.join(ASSETS_FOLDER, "./de_rham.jpg")).move_to(UP * 1.4)
-        de_rham_text = TextMobject("De Rham Claudia").move_to(UP * 3)
-
-        self.wait()
+        de_rham_photo = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/de_rham.jpg"))
+        de_rham_text = TextMobject("De Rham Claudia").move_to(DOWN * 1.5)
 
         self.play(
             FadeIn(de_rham_photo),
-            Write(de_rham_text)
+            Write(de_rham_text),
+            run_time=0.5
         )
 
-        self.wait()
+        self.wait(2)
 
         self.play(
             FadeOut(de_rham_photo),
-            FadeOut(de_rham_text)
+            FadeOut(de_rham_text),
+            run_time=0.5
         )
-
-        self.wait()
 
 
 class SadEinstein(VerticalScene):
