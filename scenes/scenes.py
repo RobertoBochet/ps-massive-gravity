@@ -148,8 +148,8 @@ class LISA(VerticalScene):
         "satellites_style": {
             "radius": 0.2,
             "fill_opacity": 1,
-            "fill_color": Color("purple"),
-            "color": Color("purple")
+            "fill_color": "#000080",
+            "color": "#003696"
         },
         "lasers_style": {
             "color": "#F00",
