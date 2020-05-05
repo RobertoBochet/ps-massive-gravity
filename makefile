@@ -42,3 +42,6 @@ scene_wave_race: $(MANIM_SOURCE)
 
 scene_thinker: $(MANIM_SOURCE)
 	$(MANIM_COMMAND) $(MANIM_SOURCE) Thinker $(MANIM_ARGUMENTS)
+
+scene_gravity_points: $(MANIM_SOURCE)
+	$(MANIM_COMMAND) $(MANIM_SOURCE) GravityPoints $(MANIM_ARGUMENTS)

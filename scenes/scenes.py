@@ -278,3 +278,48 @@ class Thinker(VerticalScene):
 
         self.wait()
 
+
+class GravityPoints(VerticalScene):
+    CONFIG = {
+        "point_small_style": {
+            "radius": 0.2,
+            "fill_opacity": 1,
+            "stroke_width": 2,
+            "fill_color": "#FF0000",
+            "color": "#FF3696"
+        },
+        "point_big_style": {
+            "radius": 0.7,
+            "fill_opacity": 1,
+            "stroke_width": 4,
+            "fill_color": "#000080",
+            "color": "#003696"
+        }
+    }
+
+    def construct(self):
+        point_small = Circle(**self.CONFIG["point_small_style"]).move_to(ma2v(3, 110 * DEGREES))
+        point_big = Circle(**self.CONFIG["point_big_style"]).move_to(ma2v(-1.5, 110 * DEGREES))
+
+        self.wait()
+
+        self.play(
+            DrawBorderThenFill(point_small),
+            DrawBorderThenFill(point_big)
+        )
+
+        self.play(
+            point_small.move_to, ma2v(0.2, 110 * DEGREES),
+            point_big.move_to, ma2v(-0.7, 110 * DEGREES),
+        )
+
+        self.play(
+            ScaleInPlace(point_small),
+            ScaleInPlace(point_big)
+        )
+
+        self.wait()
+
+
+def ma2v(m: float, a: float):
+    return m * (RIGHT * np.cos(a) + UP * np.sin(a))
