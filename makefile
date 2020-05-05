@@ -36,3 +36,9 @@ scene_lisa: $(MANIM_SOURCE)
 
 scene_massive_gravity_text: $(MANIM_SOURCE)
 	$(MANIM_COMMAND) $(MANIM_SOURCE) MassiveGravityText $(MANIM_ARGUMENTS)
+
+scene_wave_race: $(MANIM_SOURCE)
+	$(MANIM_COMMAND) $(MANIM_SOURCE) WaveRace $(MANIM_ARGUMENTS)
+
+scene_thinker: $(MANIM_SOURCE)
+	$(MANIM_COMMAND) $(MANIM_SOURCE) Thinker $(MANIM_ARGUMENTS)

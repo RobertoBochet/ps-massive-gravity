@@ -241,3 +241,40 @@ class MassiveGravityText(VerticalScene):
         self.play(Write(text))
 
         self.wait()
+
+
+class WaveRace(VerticalScene):
+    def construct(self):
+        light_text = TextMobject("Luce").move_to(DOWN * 4 + LEFT * 1.5)
+        gravity_text = TextMobject("Gravità").move_to(DOWN * 4 + RIGHT * 1.5)
+
+        light_wave = FunctionGraph(lambda x: np.sin(x * 3) / 3, x_min=0, x_max=9, color="yellow", stroke_width=5) \
+            .rotate(90 * DEGREES) \
+            .move_to(1 * UP + LEFT * 1.5)
+        gravity_wave = FunctionGraph(lambda x: np.sin(x * 3) / 3, x_min=0, x_max=6, color="green", stroke_width=20) \
+            .rotate(90 * DEGREES) \
+            .move_to(0.5 * DOWN + RIGHT * 1.5)
+
+        self.wait()
+
+        self.play(Write(light_text), Write(gravity_text))
+
+        self.play(ShowCreation(light_wave), ShowCreation(gravity_wave), run_time=2, rate_func=linear)
+
+        self.wait()
+
+
+class Thinker(VerticalScene):
+    def construct(self):
+        thinker = ImageMobject(os.path.join(ASSETS_FOLDER, "./thinker.png"), height=8)
+
+        self.wait()
+
+        self.add(thinker)
+
+        self.wait()
+
+        self.play(ScaleInPlace(thinker, 0), run_time=0.5)
+
+        self.wait()
+
