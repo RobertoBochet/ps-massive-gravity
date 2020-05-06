@@ -1,12 +1,21 @@
 import glob
-from typing import Union, Tuple
+from typing import Union, Tuple, Generator
 
 from manimlib.imports import *
 
 ASSETS_FOLDER = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../assets/")
 
 
-class VerticalScene(Scene):
+class TimelineScene(Scene):
+    timer = None
+
+    def init_timeline(self):
+        if hasattr(self, "timeline"):
+            tl = [0, *self.timeline]
+            self.timer = (t for t in map(lambda t: t[1] - t[0], zip(tl[:-1], tl[1:])))
+
+
+class VerticalScene(TimelineScene):
     CONFIG = {
         "camera_config": {
             "frame_height": 6.0 * 21 / 9,
@@ -277,9 +286,16 @@ class WaveRace(VerticalScene):
 
         self.wait()
 
-        self.play(Write(light_text), Write(gravity_text))
+        self.play(
+            Write(light_text),
+            Write(gravity_text)
+        )
 
-        self.play(ShowCreation(light_wave), ShowCreation(gravity_wave), run_time=2, rate_func=linear)
+        self.play(
+            ShowCreation(light_wave),
+            ShowCreation(gravity_wave),
+            run_time=2, rate_func=linear
+        )
 
         self.wait()
 
@@ -301,6 +317,7 @@ class Thinker(VerticalScene):
 
 class GravityPoints(VerticalScene):
     CONFIG = {
+        "timeline": [1.0, 4.0, 5.0, 6.0],
         "point_small_style": {
             "radius": 0.2,
             "fill_opacity": 1,
@@ -318,27 +335,31 @@ class GravityPoints(VerticalScene):
     }
 
     def construct(self):
-        point_small = Circle(**self.CONFIG["point_small_style"]).move_to(ma2v(3, 110 * DEGREES))
-        point_big = Circle(**self.CONFIG["point_big_style"]).move_to(ma2v(-1.5, 110 * DEGREES))
+        self.init_timeline()
 
-        self.wait()
+        point_small = Circle(**self.point_small_style).move_to(ma2v(6, 110 * DEGREES))
+        point_big = Circle(**self.point_big_style).move_to(ma2v(-3, 110 * DEGREES))
 
         self.play(
             DrawBorderThenFill(point_small),
-            DrawBorderThenFill(point_big)
+            DrawBorderThenFill(point_big),
+            run_time=next(self.timer)
         )
 
         self.play(
             point_small.move_to, ma2v(0.2, 110 * DEGREES),
             point_big.move_to, ma2v(-0.7, 110 * DEGREES),
+            rate_func=lambda t: t*t,
+            run_time=next(self.timer)
         )
+
+        self.wait(next(self.timer))
 
         self.play(
-            ScaleInPlace(point_small),
-            ScaleInPlace(point_big)
+            ScaleInPlace(point_small, 0),
+            ScaleInPlace(point_big, 0),
+            run_time=next(self.timer)
         )
-
-        self.wait()
 
 
 def ma2v(m: float, a: float):
