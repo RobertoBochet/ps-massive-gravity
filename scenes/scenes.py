@@ -7,12 +7,14 @@ ASSETS_FOLDER = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../as
 
 
 class TimelineScene(Scene):
-    timer = None
+    _timeline_dt = None
 
-    def init_timeline(self):
-        if hasattr(self, "timeline"):
-            tl = [0, *self.timeline]
-            self.timer = (t for t in map(lambda t: t[1] - t[0], zip(tl[:-1], tl[1:])))
+    def get_next_dt(self):
+        if self._timeline_dt is None:
+            if hasattr(self, "timeline"):
+                tl = [0, *self.timeline]
+                self._timeline_dt = (t for t in map(lambda t: t[1] - t[0], zip(tl[:-1], tl[1:])))
+        return next(self._timeline_dt)
 
 
 class VerticalScene(TimelineScene):
@@ -90,31 +92,29 @@ class Expansion(VerticalScene):
     }
 
     def construct(self):
-        self.init_timeline()
-
         galaxies = Group(*[Galaxy() for _ in range(100)])
 
         self.play(
             FadeIn(galaxies),
-            run_time=next(self.timer)
+            run_time=self.get_next_dt()
         )
 
-        self.wait(next(self.timer))
+        self.wait(self.get_next_dt())
 
         self.play(
             *[v(g) for g in galaxies for v in (lambda g: g.go_away, lambda g: random.uniform(8, 40))],
-            run_time=next(self.timer), rate_func=lambda t: pow(t, 2)
+            run_time=self.get_next_dt(), rate_func=lambda t: pow(t, 2)
         )
 
 
 class DeRhamAndPaoli(VerticalScene):
     def construct(self):
-        de_rham_photo = ImageMobject(os.path.join(ASSETS_FOLDER, "./de_rham.jpg"))
+        de_rham_photo = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/de_rham.jpg"))
         de_rham_photo.move_to(UP * 1.4 + LEFT * 0.8)
         de_rham_text = TextMobject("De Rham Claudia")
         de_rham_text.move_to(UP * 3 + LEFT * 0.8)
 
-        paoli_photo = ImageMobject(os.path.join(ASSETS_FOLDER, "./paoli.jpg"))
+        paoli_photo = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/paoli.jpg"))
         paoli_photo.move_to(DOWN * 1.4 + RIGHT * 0.8)
         paoli_text = TextMobject("Wolfgang Paoli")
         paoli_text.move_to(DOWN * 3 + RIGHT * 0.8)
@@ -165,7 +165,7 @@ class DeRham(VerticalScene):
 
 class SadEinstein(VerticalScene):
     def construct(self):
-        image = ImageMobject(os.path.join(ASSETS_FOLDER, "./sad_einstein.jpg"))
+        image = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/sad_einstein.jpg"))
 
         self.play(FadeIn(image))
 
@@ -215,7 +215,7 @@ class LISA(VerticalScene):
 
     def construct(self):
         # creates the sun
-        sun = ImageMobject(os.path.join(ASSETS_FOLDER, "./sun.png"), height=10)
+        sun = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/sun.png"), height=10)
         sun.move_to(DOWN * 8)
 
         # creates satellites
@@ -325,7 +325,7 @@ class WaveRace(VerticalScene):
 
 class Thinker(VerticalScene):
     def construct(self):
-        thinker = ImageMobject(os.path.join(ASSETS_FOLDER, "./thinker.png"), height=8)
+        thinker = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/thinker.png"), height=8)
 
         self.wait()
 
@@ -358,30 +358,28 @@ class GravityPoints(VerticalScene):
     }
 
     def construct(self):
-        self.init_timeline()
-
         point_small = Circle(**self.point_small_style).move_to(ma2v(6, 110 * DEGREES))
         point_big = Circle(**self.point_big_style).move_to(ma2v(-3, 110 * DEGREES))
 
         self.play(
             DrawBorderThenFill(point_small),
             DrawBorderThenFill(point_big),
-            run_time=next(self.timer)
+            run_time=self.get_next_dt()
         )
 
         self.play(
             point_small.move_to, ma2v(0.2, 110 * DEGREES),
             point_big.move_to, ma2v(-0.7, 110 * DEGREES),
             rate_func=lambda t: pow(t, 2),
-            run_time=next(self.timer)
+            run_time=self.get_next_dt()
         )
 
-        self.wait(next(self.timer))
+        self.wait(self.get_next_dt())
 
         self.play(
             ScaleInPlace(point_small, 0),
             ScaleInPlace(point_big, 0),
-            run_time=next(self.timer)
+            run_time=self.get_next_dt()
         )
 
 
