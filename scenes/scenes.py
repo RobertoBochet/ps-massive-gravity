@@ -196,6 +196,8 @@ class BigCrunch(VerticalScene):
 
 class LISA(VerticalScene):
     CONFIG = {
+        "timeline": [1, 2.5, 3.5, 5, 6, 9.5, 10, 11],
+        "rotation_speed": 1 / 4 * np.pi,
         "satellites_style": {
             "radius": 0.2,
             "fill_opacity": 1,
@@ -234,53 +236,55 @@ class LISA(VerticalScene):
         waves.move_to(10 * RIGHT + 5 * UP)
 
         # shows the sun
-        self.play(GrowFromCenter(sun), run_time=1)
+        self.play(GrowFromCenter(sun), run_time=self.get_next_dt())
 
         # shows satellites
-        self.play(*[GrowFromCenter(sats[i]) for i in range(3)], run_time=1)
+        self.play(*[GrowFromCenter(sats[i]) for i in range(3)], run_time=self.get_next_dt())
 
         # starts rotation
+        dt = self.get_next_dt()
         self.play(
-            Rotate(sats, 1 * np.pi, about_point=ORIGIN),
-            run_time=4, rate_func=linear
+            Rotate(sats, dt * self.rotation_speed, about_point=ORIGIN),
+            run_time=dt, rate_func=linear
         )
 
         # shows lasers
+        dt = self.get_next_dt()
         self.bring_to_back(lasers)
         self.play(
-            Rotate(sats, 1 / 4 * np.pi, about_point=ORIGIN),
+            Rotate(sats, dt * self.rotation_speed, about_point=ORIGIN),
             ShowCreation(lasers),
-            run_time=1, rate_func=linear
+            run_time=dt, rate_func=linear
         )
 
         # waits waves
+        dt = self.get_next_dt()
         self.play(
-            Rotate(sats, 1 * np.pi, about_point=ORIGIN),
-            run_time=4, rate_func=linear
+            Rotate(sats, dt * self.rotation_speed, about_point=ORIGIN),
+            run_time=dt, rate_func=linear
         )
 
         # starts waves
+        dt = self.get_next_dt()
         self.add(waves)
         self.play(
-            Rotate(sats, 1 * np.pi, about_point=ORIGIN),
+            Rotate(sats, dt * self.rotation_speed, about_point=ORIGIN),
             *[v(w) for w in waves for v in (lambda w: w.scale, lambda w: 10)],
-            run_time=4, rate_func=linear
+            run_time=dt, rate_func=linear
         )
 
         # removes lasers
         self.play(
             Uncreate(lasers),
-            run_time=0.5
+            run_time=self.get_next_dt()
         )
 
         # removes sun and satellites
         self.play(
             ScaleInPlace(sun, 0),
             ScaleInPlace(sats, 0),
-            run_time=0.5
+            run_time=self.get_next_dt()
         )
-
-        self.wait()
 
 
 class MassiveGravityText(VerticalScene):
