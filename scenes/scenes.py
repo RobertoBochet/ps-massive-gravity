@@ -60,30 +60,37 @@ class Galaxy(ImageMobject):
 
 
 class DarkEnergy(VerticalScene):
+    CONFIG = {
+        "timeline": [1.0, 3.0, 6.0, 7.0, 8.0, 10.0, 10.5, 11.0]
+    }
+
     def construct(self):
         text = TextMobject("Energia oscura")
 
         galaxies = Group(*[Galaxy() for _ in range(100)])
 
-        self.play(FadeIn(galaxies))
-        self.wait(1)
+        self.play(FadeIn(galaxies), run_time=self.get_next_dt())
+        self.wait(self.get_next_dt())
 
         self.play(
             Write(text),
             *[v(g) for g in galaxies for v in (lambda g: g.go_away, lambda g: random.uniform(8, 40))],
-            run_time=3, rate_func=lambda t: pow(t, 2)
+            run_time=self.get_next_dt(), rate_func=lambda t: pow(t, 2)
         )
 
-        self.play(Transform(text, TextMobject("Deus Ex Machina")))
-        self.wait(1)
+        self.play(Transform(text, TextMobject("Deus Ex Machina")), run_time=self.get_next_dt())
+        self.wait(self.get_next_dt())
 
         red_cross = Cross(text)
 
-        self.play(ShowCreation(red_cross))
-        self.wait(1)
+        self.play(ShowCreation(red_cross), run_time=self.get_next_dt())
+        self.wait(self.get_next_dt())
 
-        self.play(FadeOut(text), FadeOut(red_cross))
-        self.wait()
+        self.play(
+            FadeOut(text),
+            FadeOut(red_cross),
+            run_time=self.get_next_dt()
+        )
 
 
 class Expansion(VerticalScene):
@@ -327,15 +334,11 @@ class Thinker(VerticalScene):
     def construct(self):
         thinker = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/thinker.png"), height=8)
 
-        self.wait()
-
         self.add(thinker)
 
         self.wait()
 
         self.play(ScaleInPlace(thinker, 0), run_time=0.5)
-
-        self.wait()
 
 
 class GravityPoints(VerticalScene):
