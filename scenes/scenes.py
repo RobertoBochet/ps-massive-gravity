@@ -70,6 +70,7 @@ class DarkEnergy(VerticalScene):
         galaxies = Group(*[Galaxy() for _ in range(100)])
 
         self.play(FadeIn(galaxies), run_time=self.get_next_dt())
+
         self.wait(self.get_next_dt())
 
         self.play(
@@ -79,11 +80,12 @@ class DarkEnergy(VerticalScene):
         )
 
         self.play(Transform(text, TextMobject("Deus Ex Machina")), run_time=self.get_next_dt())
+
         self.wait(self.get_next_dt())
 
         red_cross = Cross(text)
-
         self.play(ShowCreation(red_cross), run_time=self.get_next_dt())
+
         self.wait(self.get_next_dt())
 
         self.play(
@@ -176,22 +178,28 @@ class DeRham(VerticalScene):
 
 
 class BigCrunch(VerticalScene):
+    CONFIG = {
+        "timeline": [1, 5, 9.5]
+    }
+
     def construct(self):
-        galaxies = Group(*[Galaxy() for _ in range(100)])
+        galaxies = Group(*[Galaxy(position=((-8, 8), (-16, 16))) for _ in range(400)])
 
-        for g in galaxies:
-            g.go_away(random.uniform(6, 16))
+        self.play(FadeIn(galaxies), run_time=self.get_next_dt())
 
-        self.add(galaxies)
+        dt = self.get_next_dt()
+        self.play(
+            *[v(g) for g in galaxies for v in (lambda g: g.go_away, lambda g: random.uniform(0.5, 20))],
+            run_time=dt, rate_func=lambda t: 1 - pow(1 - t, 2)
+        )
 
         self.play(
             *[v(g) for g in galaxies for v in (lambda g: g.move_to,
                                                lambda g: np.array([0, 0, 0]),
                                                lambda g: g.scale,
                                                lambda g: 0.1)],
-            run_time=3, rate_func=lambda t: pow(t, 2)
+            run_time=self.get_next_dt(), rate_func=lambda t: pow(t, 2)
         )
-        self.wait()
 
 
 class LISA(VerticalScene):
@@ -343,8 +351,8 @@ class WaveRace(VerticalScene):
             run_time=self.get_next_dt()
         )
         self.play(
-            light_text.shift, 2*DOWN,
-            gravity_text.shift, 2*DOWN,
+            light_text.shift, 2 * DOWN,
+            gravity_text.shift, 2 * DOWN,
             run_time=self.get_next_dt()
         )
 
