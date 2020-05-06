@@ -170,19 +170,6 @@ class DeRham(VerticalScene):
         )
 
 
-class SadEinstein(VerticalScene):
-    def construct(self):
-        image = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/sad_einstein.jpg"))
-
-        self.play(FadeIn(image))
-
-        self.wait(2)
-
-        self.play(FadeOut(image))
-
-        self.wait()
-
-
 class BigCrunch(VerticalScene):
     def construct(self):
         galaxies = Group(*[Galaxy() for _ in range(100)])
@@ -328,17 +315,6 @@ class WaveRace(VerticalScene):
         )
 
         self.wait()
-
-
-class Thinker(VerticalScene):
-    def construct(self):
-        thinker = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/thinker.png"), height=8)
-
-        self.add(thinker)
-
-        self.wait()
-
-        self.play(ScaleInPlace(thinker, 0), run_time=0.5)
 
 
 class GravityPoints(VerticalScene):
