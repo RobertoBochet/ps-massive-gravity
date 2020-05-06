@@ -26,7 +26,7 @@ class VerticalScene(TimelineScene):
     }
 
 
-class DebugScene(Scene):
+class DebugScene(TimelineScene):
     CONFIG = {
         "camera_config": {
             "frame_height": 4 * 6.0 * 21 / 9,
@@ -284,14 +284,21 @@ class LISA(VerticalScene):
 
 
 class MassiveGravityText(VerticalScene):
+    CONFIG = {
+        "timeline": [1, 2.5, 3.0]
+    }
+
     def construct(self):
         text = TextMobject("Gravità massiva")
 
-        self.wait()
+        self.play(Write(text), run_time=self.get_next_dt())
 
-        self.play(Write(text))
+        self.wait(self.get_next_dt())
 
-        self.wait()
+        self.play(
+            text.move_to, DOWN * 10,
+            run_time=self.get_next_dt(), rate_func=lambda t: pow(t, 2)
+        )
 
 
 class WaveRace(VerticalScene):
