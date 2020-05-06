@@ -115,6 +115,10 @@ class Expansion(VerticalScene):
 
 
 class DeRhamAndPaoli(VerticalScene):
+    CONFIG = {
+        "timeline": [1.0, 4.5, 5.5, 7, 8.0]
+    }
+
     def construct(self):
         de_rham_photo = ImageMobject(os.path.join(ASSETS_FOLDER, "./images/de_rham.jpg"))
         de_rham_photo.move_to(UP * 1.4 + LEFT * 0.8)
@@ -128,26 +132,27 @@ class DeRhamAndPaoli(VerticalScene):
 
         self.play(
             FadeIn(de_rham_photo),
-            Write(de_rham_text)
+            Write(de_rham_text),
+            run_time=self.get_next_dt()
         )
 
-        self.wait(2)
+        self.wait(self.get_next_dt())
 
         self.play(
             FadeIn(paoli_photo),
-            Write(paoli_text)
+            Write(paoli_text),
+            run_time=self.get_next_dt()
         )
 
-        self.wait(1)
+        self.wait(self.get_next_dt())
 
         self.play(
             FadeOut(de_rham_photo),
             FadeOut(de_rham_text),
             FadeOut(paoli_photo),
-            FadeOut(paoli_text)
+            FadeOut(paoli_text),
+            run_time=self.get_next_dt()
         )
-
-        self.wait()
 
 
 class DeRham(VerticalScene):
