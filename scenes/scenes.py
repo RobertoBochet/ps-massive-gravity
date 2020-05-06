@@ -1,5 +1,5 @@
 import glob
-from typing import Union, Tuple, Generator
+from typing import Union, Tuple
 
 from manimlib.imports import *
 
@@ -37,7 +37,7 @@ class DebugScene(Scene):
 
 
 class Galaxy(ImageMobject):
-    list = glob.glob(os.path.join(ASSETS_FOLDER, "./galaxies/*"))
+    list = glob.glob(os.path.join(ASSETS_FOLDER, "./images/galaxies/*"))
 
     def __init__(self,
                  scale: Union[float, Tuple[float, float]] = (0.01, 0.6),
@@ -82,6 +82,29 @@ class DarkEnergy(VerticalScene):
 
         self.play(FadeOut(text), FadeOut(red_cross))
         self.wait()
+
+
+class Expansion(VerticalScene):
+    CONFIG = {
+        "timeline": [1.0, 3.0, 6.0]
+    }
+
+    def construct(self):
+        self.init_timeline()
+
+        galaxies = Group(*[Galaxy() for _ in range(100)])
+
+        self.play(
+            FadeIn(galaxies),
+            run_time=next(self.timer)
+        )
+
+        self.wait(next(self.timer))
+
+        self.play(
+            *[v(g) for g in galaxies for v in (lambda g: g.go_away, lambda g: random.uniform(8, 40))],
+            run_time=next(self.timer), rate_func=lambda t: pow(t, 2)
+        )
 
 
 class DeRhamAndPaoli(VerticalScene):
@@ -349,7 +372,7 @@ class GravityPoints(VerticalScene):
         self.play(
             point_small.move_to, ma2v(0.2, 110 * DEGREES),
             point_big.move_to, ma2v(-0.7, 110 * DEGREES),
-            rate_func=lambda t: t*t,
+            rate_func=lambda t: pow(t, 2),
             run_time=next(self.timer)
         )
 
