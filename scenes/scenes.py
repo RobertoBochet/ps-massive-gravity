@@ -306,6 +306,10 @@ class MassiveGravityText(VerticalScene):
 
 
 class WaveRace(VerticalScene):
+    CONFIG = {
+        "timeline": [1, 2, 4.5, 5.5, 5.75, 6]
+    }
+
     def construct(self):
         light_text = TextMobject("Luce").move_to(DOWN * 4 + LEFT * 1.5)
         gravity_text = TextMobject("Gravità").move_to(DOWN * 4 + RIGHT * 1.5)
@@ -313,24 +317,36 @@ class WaveRace(VerticalScene):
         light_wave = FunctionGraph(lambda x: np.sin(x * 3) / 3, x_min=0, x_max=9, color="yellow", stroke_width=5) \
             .rotate(90 * DEGREES) \
             .move_to(1 * UP + LEFT * 1.5)
-        gravity_wave = FunctionGraph(lambda x: np.sin(x * 3) / 3, x_min=0, x_max=6, color="green", stroke_width=20) \
+        gravity_wave = FunctionGraph(lambda x: np.sin(x * 3) / 3, x_min=0, x_max=6, color="lightblue", stroke_width=20) \
             .rotate(90 * DEGREES) \
             .move_to(0.5 * DOWN + RIGHT * 1.5)
 
-        self.wait()
-
         self.play(
             Write(light_text),
-            Write(gravity_text)
+            Write(gravity_text),
+            run_time=self.get_next_dt()
         )
+
+        self.wait(self.get_next_dt())
 
         self.play(
             ShowCreation(light_wave),
             ShowCreation(gravity_wave),
-            run_time=2, rate_func=linear
+            run_time=self.get_next_dt(), rate_func=linear
         )
 
-        self.wait()
+        self.wait(self.get_next_dt())
+
+        self.play(
+            Uncreate(light_wave),
+            Uncreate(gravity_wave),
+            run_time=self.get_next_dt()
+        )
+        self.play(
+            light_text.shift, 2*DOWN,
+            gravity_text.shift, 2*DOWN,
+            run_time=self.get_next_dt()
+        )
 
 
 class GravityPoints(VerticalScene):
