@@ -446,11 +446,30 @@
   <property name="kdenlive:original_length">00:00:05,000</property>
   <property name="global_feed">1</property>
  </producer>
+ <producer id="producer14" in="00:00:00,000" out="00:00:04,983">
+  <property name="length">00:00:05,000</property>
+  <property name="eof">pause</property>
+  <property name="resource">/home/roberto/Documents/Corsi/Trattare di scienza/project/video/assets/images/goal.jpg</property>
+  <property name="ttl">25</property>
+  <property name="aspect_ratio">1</property>
+  <property name="progressive">1</property>
+  <property name="seekable">1</property>
+  <property name="meta.media.width">374</property>
+  <property name="meta.media.height">497</property>
+  <property name="mlt_service">qimage</property>
+  <property name="kdenlive:clipname"/>
+  <property name="kdenlive:duration">00:00:05,000</property>
+  <property name="kdenlive:folderid">18</property>
+  <property name="kdenlive:id">17</property>
+  <property name="kdenlive:file_size">24257</property>
+  <property name="kdenlive:file_hash">dcf2753e8bf89281745ce7ab420b3d1f</property>
+  <property name="global_feed">1</property>
+ </producer>
  <playlist id="main_bin">
   <property name="kdenlive:folder.-1.13">manim</property>
   <property name="kdenlive:folder.-1.18">images</property>
   <property name="kdenlive:folder.-1.19">clips</property>
-  <property name="kdenlive:docproperties.activeTrack">2</property>
+  <property name="kdenlive:docproperties.activeTrack">3</property>
   <property name="kdenlive:docproperties.audioTarget">-1</property>
   <property name="kdenlive:docproperties.decimalPoint">,</property>
   <property name="kdenlive:docproperties.disablebineffects">1</property>
@@ -510,16 +529,11 @@
         "comment": "guide",
         "pos": 2687,
         "type": 0
-    },
-    {
-        "comment": "guide",
-        "pos": 2991,
-        "type": 0
     }
 ]
 </property>
   <property name="kdenlive:docproperties.kdenliveversion">20.04.0</property>
-  <property name="kdenlive:docproperties.position">2033</property>
+  <property name="kdenlive:docproperties.position">3012</property>
   <property name="kdenlive:docproperties.previewextension"/>
   <property name="kdenlive:docproperties.previewparameters"/>
   <property name="kdenlive:docproperties.profile">/home/roberto/.local/share/kdenlive/profiles/customprofile2</property>
@@ -548,16 +562,16 @@
   <property name="kdenlive:docproperties.rendertctype">0</property>
   <property name="kdenlive:docproperties.rendertwopass">0</property>
   <property name="kdenlive:docproperties.renderurl">/mnt/multimedia/documents/Corsi/Trattare di scienza/project/video/render/middle.mp4</property>
-  <property name="kdenlive:docproperties.renderzone">1</property>
-  <property name="kdenlive:docproperties.scrollPos">1686</property>
+  <property name="kdenlive:docproperties.renderzone">0</property>
+  <property name="kdenlive:docproperties.scrollPos">1908</property>
   <property name="kdenlive:docproperties.seekOffset">30000</property>
   <property name="kdenlive:docproperties.storagefolder">/home/roberto/.cache/kdenlive/1588709716360</property>
   <property name="kdenlive:docproperties.version">0.99</property>
   <property name="kdenlive:docproperties.verticalzoom">1</property>
   <property name="kdenlive:docproperties.videoTarget">1</property>
-  <property name="kdenlive:docproperties.zonein">1555</property>
-  <property name="kdenlive:docproperties.zoneout">2033</property>
-  <property name="kdenlive:docproperties.zoom">5</property>
+  <property name="kdenlive:docproperties.zonein">2672</property>
+  <property name="kdenlive:docproperties.zoneout">3012</property>
+  <property name="kdenlive:docproperties.zoom">6</property>
   <property name="kdenlive:documentnotes"/>
   <property name="xml_retain">1</property>
   <entry producer="producer3" in="00:00:00,000" out="00:00:59,983"/>
@@ -574,6 +588,7 @@
   <entry producer="producer9" in="00:00:00,000" out="00:00:04,983"/>
   <entry producer="producer4" in="00:00:00,000" out="00:00:02,300"/>
   <entry producer="producer13" in="00:00:00,000" out="00:00:04,983"/>
+  <entry producer="producer14" in="00:00:00,000" out="00:00:04,983"/>
  </playlist>
  <producer id="black_track" in="00:00:00,000" out="00:09:20,000">
   <property name="length">2147483647</property>
@@ -584,7 +599,7 @@
   <property name="mlt_image_format">rgb24a</property>
   <property name="set.test_audio">0</property>
  </producer>
- <producer title="Anonymous Submission" id="producer14" in="00:00:00,000" out="00:01:00,000">
+ <producer title="Anonymous Submission" id="producer15" in="00:00:00,000" out="00:01:00,000">
   <property name="length">3601</property>
   <property name="eof">pause</property>
   <property name="resource">/home/roberto/Documents/Corsi/Trattare di scienza/project/video/recordings/middle.mp3</property>
@@ -614,7 +629,7 @@
  </producer>
  <playlist id="playlist0">
   <property name="kdenlive:audio_track">1</property>
-  <entry producer="producer14" in="00:00:00,000" out="00:00:59,983">
+  <entry producer="producer15" in="00:00:00,000" out="00:00:59,983">
    <property name="kdenlive:id">11</property>
   </entry>
   <filter id="filter3">
@@ -667,7 +682,7 @@
   <track hide="audio" producer="playlist2"/>
   <track hide="audio" producer="playlist3"/>
  </tractor>
- <producer title="Anonymous Submission" id="producer15" in="00:00:00,000" out="00:00:01,350">
+ <producer title="Anonymous Submission" id="producer16" in="00:00:00,000" out="00:00:01,350">
   <property name="length">82</property>
   <property name="eof">pause</property>
   <property name="resource">/home/roberto/Documents/Corsi/Trattare di scienza/project/video/assets/clips/jump.mkv</property>
@@ -716,7 +731,7 @@
   <property name="set.test_audio">1</property>
   <property name="set.test_image">0</property>
  </producer>
- <producer title="Anonymous Submission" id="producer16" in="00:00:00,000" out="00:00:05,983">
+ <producer title="Anonymous Submission" id="producer17" in="00:00:00,000" out="00:00:05,983">
   <property name="length">360</property>
   <property name="eof">pause</property>
   <property name="resource">/home/roberto/Documents/Corsi/Trattare di scienza/project/video/render/manim/GravityPoints.mp4</property>
@@ -766,7 +781,7 @@
   <property name="set.test_audio">1</property>
   <property name="set.test_image">0</property>
  </producer>
- <producer title="Anonymous Submission" id="producer17" in="00:00:00,000" out="00:00:05,983">
+ <producer title="Anonymous Submission" id="producer18" in="00:00:00,000" out="00:00:05,983">
   <property name="length">360</property>
   <property name="eof">pause</property>
   <property name="resource">/home/roberto/Documents/Corsi/Trattare di scienza/project/video/render/manim/Expansion.mp4</property>
@@ -816,7 +831,7 @@
   <property name="set.test_audio">1</property>
   <property name="set.test_image">0</property>
  </producer>
- <producer title="Anonymous Submission" id="producer18" in="00:00:00,000" out="00:00:02,983">
+ <producer title="Anonymous Submission" id="producer19" in="00:00:00,000" out="00:00:02,983">
   <property name="length">180</property>
   <property name="eof">pause</property>
   <property name="resource">/home/roberto/Documents/Corsi/Trattare di scienza/project/video/render/manim/DeRham.mp4</property>
@@ -866,7 +881,7 @@
   <property name="meta.media.top_field_first">0</property>
   <property name="meta.media.progressive">1</property>
  </producer>
- <producer title="Anonymous Submission" id="producer19" in="00:00:00,000" out="00:00:04,983">
+ <producer title="Anonymous Submission" id="producer20" in="00:00:00,000" out="00:00:04,983">
   <property name="length">300</property>
   <property name="eof">pause</property>
   <property name="resource">/home/roberto/Documents/Corsi/Trattare di scienza/project/video/assets/clips/running.mkv</property>
@@ -918,7 +933,7 @@
   <property name="set.test_audio">1</property>
   <property name="set.test_image">0</property>
  </producer>
- <producer title="Anonymous Submission" id="producer20" in="00:00:00,000" out="00:00:09,483">
+ <producer title="Anonymous Submission" id="producer21" in="00:00:00,000" out="00:00:09,483">
   <property name="length">570</property>
   <property name="eof">pause</property>
   <property name="resource">/home/roberto/Documents/Corsi/Trattare di scienza/project/video/render/manim/BigCrunch.mp4</property>
@@ -970,7 +985,7 @@
  </producer>
  <playlist id="playlist4">
   <blank length="00:00:01,233"/>
-  <entry producer="producer15" in="00:00:00,000" out="00:00:01,350">
+  <entry producer="producer16" in="00:00:00,000" out="00:00:01,350">
    <property name="kdenlive:id">3</property>
   </entry>
   <blank length="00:00:01,250"/>
@@ -988,10 +1003,10 @@
    </filter>
   </entry>
   <blank length="00:00:00,200"/>
-  <entry producer="producer16" in="00:00:00,000" out="00:00:00,000">
+  <entry producer="producer17" in="00:00:00,000" out="00:00:00,000">
    <property name="kdenlive:id">8</property>
   </entry>
-  <entry producer="producer16" in="00:00:00,000" out="00:00:05,983">
+  <entry producer="producer17" in="00:00:00,000" out="00:00:05,983">
    <property name="kdenlive:id">8</property>
   </entry>
   <blank length="00:00:02,417"/>
@@ -999,7 +1014,7 @@
    <property name="kdenlive:id">15</property>
   </entry>
   <blank length="00:00:00,400"/>
-  <entry producer="producer17" in="00:00:00,000" out="00:00:05,983">
+  <entry producer="producer18" in="00:00:00,000" out="00:00:05,983">
    <property name="kdenlive:id">9</property>
   </entry>
   <blank length="00:00:00,533"/>
@@ -1019,7 +1034,6 @@
   </entry>
   <entry producer="producer5" in="00:00:00,000" out="00:00:04,417">
    <property name="kdenlive:id">12</property>
-   <property name="kdenlive:activeeffect">0</property>
    <filter id="filter5">
     <property name="rotate_center">1</property>
     <property name="mlt_service">qtblend</property>
@@ -1060,11 +1074,11 @@
    </filter>
   </entry>
   <blank length="00:00:00,533"/>
-  <entry producer="producer18" in="00:00:00,000" out="00:00:02,983">
+  <entry producer="producer19" in="00:00:00,000" out="00:00:02,983">
    <property name="kdenlive:id">7</property>
   </entry>
   <blank length="00:00:00,333"/>
-  <entry producer="producer19" in="00:00:00,000" out="00:00:04,983">
+  <entry producer="producer20" in="00:00:00,000" out="00:00:04,983">
    <property name="kdenlive:id">4</property>
    <filter id="filter9">
     <property name="rotate_center">1</property>
@@ -1078,7 +1092,7 @@
    </filter>
   </entry>
   <blank length="00:00:00,700"/>
-  <entry producer="producer20" in="00:00:00,000" out="00:00:09,483">
+  <entry producer="producer21" in="00:00:00,000" out="00:00:09,483">
    <property name="kdenlive:id">10</property>
   </entry>
  </playlist>
@@ -1092,11 +1106,35 @@
   <track hide="audio" producer="playlist4"/>
   <track hide="audio" producer="playlist5"/>
  </tractor>
- <tractor title="Anonymous Submission" id="tractor3" global_feed="1" in="00:00:00,000" out="00:09:20,000">
+ <playlist id="playlist6">
+  <blank length="00:00:44,800"/>
+  <entry producer="producer14" in="00:00:00,000" out="00:00:04,983">
+   <property name="kdenlive:id">17</property>
+   <filter id="filter8">
+    <property name="rotate_center">1</property>
+    <property name="mlt_service">qtblend</property>
+    <property name="kdenlive_id">qtblend</property>
+    <property name="rect">00:00:00,000=696 662 376 1067 1</property>
+    <property name="rotation">00:00:00,000=0</property>
+    <property name="compositing">0</property>
+    <property name="distort">0</property>
+    <property name="kdenlive:collapsed">0</property>
+   </filter>
+  </entry>
+ </playlist>
+ <playlist id="playlist7"/>
+ <tractor id="tractor3" in="00:00:00,000" out="00:00:49,783">
+  <property name="kdenlive:trackheight">69</property>
+  <property name="kdenlive:timeline_active">1</property>
+  <track producer="playlist6"/>
+  <track producer="playlist7"/>
+ </tractor>
+ <tractor title="Anonymous Submission" id="tractor4" global_feed="1" in="00:00:00,000" out="00:09:20,000">
   <track producer="black_track"/>
   <track producer="tractor0"/>
   <track producer="tractor1"/>
   <track producer="tractor2"/>
+  <track producer="tractor3"/>
   <transition id="transition0">
    <property name="a_track">0</property>
    <property name="b_track">1</property>
@@ -1106,7 +1144,22 @@
    <property name="always_active">1</property>
    <property name="sum">1</property>
   </transition>
-  <transition id="transition1" in="00:00:26,167" out="00:00:26,717">
+  <transition id="transition1" in="00:00:44,800" out="00:00:45,117">
+   <property name="a_track">3</property>
+   <property name="b_track">4</property>
+   <property name="start">0/0:100%x100%</property>
+   <property name="factory">loader</property>
+   <property name="aligned">0</property>
+   <property name="progressive">1</property>
+   <property name="mlt_service">composite</property>
+   <property name="kdenlive_id">wipe</property>
+   <property name="softness">0</property>
+   <property name="luma"/>
+   <property name="luma_invert">0</property>
+   <property name="geometry">0%/0%:100%x100%:0;-1=0%/0%:100%x100%:100</property>
+   <property name="fill">1</property>
+  </transition>
+  <transition id="transition2" in="00:00:26,167" out="00:00:26,567">
    <property name="a_track">2</property>
    <property name="b_track">3</property>
    <property name="start">0/0:100%x100%</property>
@@ -1121,7 +1174,7 @@
    <property name="geometry">0%/0%:100%x100%:0;-1=0%/0%:100%x100%:100</property>
    <property name="fill">1</property>
   </transition>
-  <transition id="transition2" in="00:00:16,917" out="00:00:17,417">
+  <transition id="transition3" in="00:00:16,917" out="00:00:17,417">
    <property name="a_track">2</property>
    <property name="b_track">3</property>
    <property name="start">0/0:100%x100%</property>
@@ -1136,7 +1189,7 @@
    <property name="geometry">0%/0%:100%x100%:0;-1=0%/0%:100%x100%:100</property>
    <property name="fill">1</property>
   </transition>
-  <transition id="transition3" in="00:00:07,683" out="00:00:08,267">
+  <transition id="transition4" in="00:00:49,383" out="00:00:49,783">
    <property name="a_track">2</property>
    <property name="b_track">3</property>
    <property name="start">0/0:100%x100%</property>
@@ -1151,52 +1204,7 @@
    <property name="geometry">0%/0%:100%x100%:100;-1=0%/0%:100%x100%:0</property>
    <property name="fill">1</property>
   </transition>
-  <transition id="transition4" in="00:00:18,667" out="00:00:19,217">
-   <property name="a_track">2</property>
-   <property name="b_track">3</property>
-   <property name="start">0/0:100%x100%</property>
-   <property name="factory">loader</property>
-   <property name="aligned">0</property>
-   <property name="progressive">1</property>
-   <property name="mlt_service">composite</property>
-   <property name="kdenlive_id">wipe</property>
-   <property name="softness">0</property>
-   <property name="luma"/>
-   <property name="luma_invert">0</property>
-   <property name="geometry">0%/0%:100%x100%:100;-1=0%/0%:100%x100%:0</property>
-   <property name="fill">1</property>
-  </transition>
-  <transition id="transition5" in="00:00:33,450" out="00:00:33,783">
-   <property name="a_track">2</property>
-   <property name="b_track">3</property>
-   <property name="start">0/0:100%x100%</property>
-   <property name="factory">loader</property>
-   <property name="aligned">0</property>
-   <property name="progressive">1</property>
-   <property name="mlt_service">composite</property>
-   <property name="kdenlive_id">wipe</property>
-   <property name="softness">0</property>
-   <property name="luma"/>
-   <property name="luma_invert">0</property>
-   <property name="geometry">0%/0%:100%x100%:100;-1=0%/0%:100%x100%:0</property>
-   <property name="fill">1</property>
-  </transition>
-  <transition id="transition6" in="00:00:49,383" out="00:00:49,783">
-   <property name="a_track">2</property>
-   <property name="b_track">3</property>
-   <property name="start">0/0:100%x100%</property>
-   <property name="factory">loader</property>
-   <property name="aligned">0</property>
-   <property name="progressive">1</property>
-   <property name="mlt_service">composite</property>
-   <property name="kdenlive_id">wipe</property>
-   <property name="softness">0</property>
-   <property name="luma"/>
-   <property name="luma_invert">0</property>
-   <property name="geometry">0%/0%:100%x100%:100;-1=0%/0%:100%x100%:0</property>
-   <property name="fill">1</property>
-  </transition>
-  <transition id="transition7" in="00:00:37,600" out="00:00:38,033">
+  <transition id="transition5" in="00:00:37,600" out="00:00:38,000">
    <property name="a_track">2</property>
    <property name="b_track">3</property>
    <property name="start">0/0:100%x100%</property>
@@ -1211,7 +1219,52 @@
    <property name="geometry">0%/0%:100%x100%:0;-1=0%/0%:100%x100%:100</property>
    <property name="fill">1</property>
   </transition>
-  <transition id="transition8">
+  <transition id="transition6" in="00:00:33,383" out="00:00:33,783">
+   <property name="a_track">2</property>
+   <property name="b_track">3</property>
+   <property name="start">0/0:100%x100%</property>
+   <property name="factory">loader</property>
+   <property name="aligned">0</property>
+   <property name="progressive">1</property>
+   <property name="mlt_service">composite</property>
+   <property name="kdenlive_id">wipe</property>
+   <property name="softness">0</property>
+   <property name="luma"/>
+   <property name="luma_invert">0</property>
+   <property name="geometry">0%/0%:100%x100%:100;-1=0%/0%:100%x100%:0</property>
+   <property name="fill">1</property>
+  </transition>
+  <transition id="transition7" in="00:00:18,667" out="00:00:19,217">
+   <property name="a_track">2</property>
+   <property name="b_track">3</property>
+   <property name="start">0/0:100%x100%</property>
+   <property name="factory">loader</property>
+   <property name="aligned">0</property>
+   <property name="progressive">1</property>
+   <property name="mlt_service">composite</property>
+   <property name="kdenlive_id">wipe</property>
+   <property name="softness">0</property>
+   <property name="luma"/>
+   <property name="luma_invert">0</property>
+   <property name="geometry">0%/0%:100%x100%:100;-1=0%/0%:100%x100%:0</property>
+   <property name="fill">1</property>
+  </transition>
+  <transition id="transition8" in="00:00:07,683" out="00:00:08,267">
+   <property name="a_track">2</property>
+   <property name="b_track">3</property>
+   <property name="start">0/0:100%x100%</property>
+   <property name="factory">loader</property>
+   <property name="aligned">0</property>
+   <property name="progressive">1</property>
+   <property name="mlt_service">composite</property>
+   <property name="kdenlive_id">wipe</property>
+   <property name="softness">0</property>
+   <property name="luma"/>
+   <property name="luma_invert">0</property>
+   <property name="geometry">0%/0%:100%x100%:100;-1=0%/0%:100%x100%:0</property>
+   <property name="fill">1</property>
+  </transition>
+  <transition id="transition9">
    <property name="a_track">0</property>
    <property name="b_track">2</property>
    <property name="compositing">0</property>
@@ -1222,9 +1275,20 @@
    <property name="internal_added">237</property>
    <property name="always_active">1</property>
   </transition>
-  <transition id="transition9">
+  <transition id="transition10">
    <property name="a_track">0</property>
    <property name="b_track">3</property>
+   <property name="compositing">0</property>
+   <property name="distort">0</property>
+   <property name="rotate_center">0</property>
+   <property name="mlt_service">qtblend</property>
+   <property name="kdenlive_id">qtblend</property>
+   <property name="internal_added">237</property>
+   <property name="always_active">1</property>
+  </transition>
+  <transition id="transition11">
+   <property name="a_track">0</property>
+   <property name="b_track">4</property>
    <property name="compositing">0</property>
    <property name="distort">0</property>
    <property name="rotate_center">0</property>
@@ -1247,7 +1311,7 @@
    <property name="start">0,5</property>
    <property name="disable">1</property>
   </filter>
-  <filter id="filter8">
+  <filter id="filter12">
    <property name="iec_scale">0</property>
    <property name="mlt_service">audiolevel</property>
    <property name="disable">1</property>
